@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>论坛 | 2016级2班纪念网站</title>
+        <link type="text/css" rel="stylesheet" href="JSTest4.css" />
+    </head>
+</html>
+<body>
+    <div class="bbs">
+        <header><span onclick="iWantPost()">我要发帖</span></header>
+        <section>
+            <ul>
+                <!--
+                    <li>
+                        <div>
+                            <img src="images/tou01.jpg" alt="">
+                        </div>
+                        <h1>如何学习前端Web开发课程</h1>
+                        <p><span>板块: 新课来了</span><span>发表时间: 2023-13-32 25:61</span></p>
+                    </li>
+                -->
+            </ul>
+        </section>
+        <div class="post" id="post1">
+            <input id="title" placeholder="请输入标题（1-50个字符）">
+            所属板块: <select><option>请选择板块</option><option>电子书籍</option><option>炸妈工程</option></select>
+            <textarea class="content"></textarea>
+            <input class="btn" value="发布" onclick="post()">
+        </div>
+    </div>
+</body>
+<!-- Footer -->
+<footer id="footer" class="wrapper style1-alt">
+    <div class="inner">
+        <ul class="menu">
+            <li>此论坛还在测试当中，可能会引发错误！</li>
+        </ul>
+    </div>
+</footer>
+</html>
+
+<script>
+
+    function iWantPost() {
+        document.getElementById("post1").style.display = "block";
+    }
+
+    function headPortrait() {
+        var head = new Arrat("01.jpg","02.jpg","03.jpg","04,jpg");
+        var n = parseInt(Math.random() * 4);
+        return head[n];
+    }
+
+    function post() {
+        document.getElementById("post1").style.display = "none";
+        var ul = document.getElementsByTagName("ul")[0];
+        var li = document.createElement("li");
+        var div = document.createElement("div");
+        var img = document.createElement("img");
+        var h1 = document.createElement("h1");
+        var p =document.createElement("p");
+        var span = document.createElement("span");
+
+        ul.appendChild(li);
+        li.className = ".bbs section ul li";
+
+        li.appendChild(div);
+        li,className = ".bbs section ul li div";
+        
+        div.appendChild(img);
+        img.className = ".bbs section ul li div img";
+        img.src = "../image/" + headPortrait();
+
+        li.appendChild(h1);
+        h1.classname = ".bbs section ul li h1";
+        h1.innerHTML = document.getElementById("title").value;
+
+        li.appendChild(p);
+        p.classname = ".bbs section ul li p";
+        p.innerHTML = "板块:" +document.getElementsByTagName("select")[0].value;
+
+        p.appendChild(span);
+        span.classname = ".bbs section ul li p span";
+
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = today.getMonth() +1;
+        var day = today.getDate();
+        var hour = today.getHours();
+        var minute = today.getMinutes();
+        var second = today.getSeconds();
+
+        span.innerHTML = "发表时间:" + year + "-" + month + "-" + day + "&nbsp;" + hour + ":" + minute + ":" + secondl;
+
+        document.getElementById("title").value = "";
+        document.getElementsByTagName("select")[0].value = "";
+        ul.insertBefore(li, ul.firstElementChild);
+
+    }
+    </script>
